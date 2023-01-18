@@ -8,9 +8,9 @@ Files containing Monty byte codes usually have the .m extension. Most of the ind
 
 
 ## Functions
-utils.c   
-	check_file_extension:   
-		Files containing Monty byte codes usually have the .m extension.   
-	open_file:  
-		opens the monty file with error checking    
+- utils.c   
+	- check_file_extension:   
+		- Files containing Monty byte codes usually have the .m extension.   
+	- open_file:  
+		- opens the monty file with error checking    
 
