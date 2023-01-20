@@ -76,6 +76,9 @@ int run_op_code(char *line, unsigned int line_number)
 		case PALL:
 			pall(&stack);
 			break;
+		case PINT:
+			pint(&stack, line_number);
+			break;
 		default:
 			if (token != NULL)
 			{
