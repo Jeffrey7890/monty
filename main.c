@@ -27,7 +27,7 @@ int main(int ac, char **argv)
 
 	file_name = argv[1];
 
-	check_file_extension(file_name);
+	/* check_file_extension(file_name); */
 	file = open_file(file_name);
 
 	/* main loop */
