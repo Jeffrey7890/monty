@@ -18,13 +18,13 @@ int set_op_code_arg(char *code, unsigned int *lnumber)
 
 	for (i = 0; i < length; i++)
 	{
-		if (!_isdigit(code[i]))
+		if (_isdigit(code[i]))
 		{
-			return (-1);
+			*lnumber = atoi(code);
+			return (0);
 		}
 	}
-	*lnumber = atoi(code);
-	return (0);
+	return (-1);
 }
 
 /**
