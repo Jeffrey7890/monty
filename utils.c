@@ -22,6 +22,17 @@ void print_err(unsigned int line_number)
 }
 
 /**
+  * print_err_arg - helper function to print errs with argument
+  * @line_number: location of where the error occured
+  * @arg: argument to ber printed
+  */
+void print_err_arg(unsigned int line_number, char *arg)
+{
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, arg);
+	exit(EXIT_FAILURE);
+}
+
+/**
   * open_file - opens the file with fopen and checks for errors
   * @file_name: name of the file
   * Return: FILE stream pointer

@@ -79,12 +79,12 @@ int run_op_code(char *line, unsigned int line_number)
 		case PINT:
 			pint(&stack, line_number);
 			break;
+		case POP:
+			pop(&stack, line_number);
+			break;
 		default:
 			if (token != NULL)
-			{
-				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
-				exit(EXIT_FAILURE);
-			}
+				print_err_arg(line_number, token);
 			break;
 	}
 

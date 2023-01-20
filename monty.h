@@ -8,8 +8,6 @@
 
 
 extern char opcode_arr[][10];
-enum OPCODE
-{PUSH, PINT, PALL};
 
 
 /**
@@ -50,6 +48,7 @@ void free_stack(stack_t *stack);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 /* operations */
 int _isdigit(char c);
@@ -59,6 +58,7 @@ int set_op_code_arg(char *code, unsigned int *lnumber);
 
 /* utility funcitons */
 void print_err(unsigned int line_number);
+void print_err_arg(unsigned int line_number, char *arg);
 void check_file_extension(const char *file_name);
 FILE *open_file(const char *file_name);
 
