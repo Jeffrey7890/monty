@@ -36,7 +36,7 @@ int main(int ac, char **argv)
 		line_count++;
 		line[strlen(line) - 1] = '\0';
 
-		run_op_code(line, line_count);
+		_run_op_code(line, line_count);
 
 	}
 

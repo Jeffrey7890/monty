@@ -49,11 +49,12 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 /* operations */
 int _isdigit(char c);
 int _get_opcode(char *code);
-int run_op_code(char *line, unsigned int line_number);
+int _run_op_code(char *line, unsigned int line_number);
 int set_op_code_arg(char *code, unsigned int *lnumber);
 
 /* utility funcitons */
