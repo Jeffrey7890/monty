@@ -6,6 +6,12 @@
 #include <string.h>
 #include <unistd.h>
 
+
+extern char opcode_arr[][10];
+enum OPCODE
+{PUSH, PINT, PALL};
+
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -21,6 +27,8 @@ typedef struct stack_s
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
+extern stack_t *stack;
+
 
 
 /**
@@ -37,8 +45,19 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* opcodes */
+void free_stack(stack_t *stack);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack);
+
+/* operations */
+int _isdigit(char c);
+int _get_opcode(char *code);
+int run_op_code(char *line, unsigned int line_number);
+int set_op_code_arg(char *code, unsigned int *lnumber);
 
 /* utility funcitons */
+void print_err(unsigned int line_number);
 void check_file_extension(const char *file_name);
 FILE *open_file(const char *file_name);
 

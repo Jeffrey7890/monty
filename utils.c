@@ -1,6 +1,18 @@
 #include "monty.h"
 
 
+int _isdigit(char c)
+{
+	return ((c >= 48) && (c <= 57));
+}
+
+
+void print_err(unsigned int line_number)
+{
+	fprintf(stderr, "L%d: usage: push integer\n", line_number);
+	exit(EXIT_FAILURE);
+}
+
 /**
   * open_file - opens the file with fopen and checks for errors
   * @file_name: name of the file

@@ -34,10 +34,14 @@ int main(int ac, char **argv)
 	while (fgets(line, sizeof(line), file))
 	{
 		line_count++;
-		printf("%s", line);
+		line[strlen(line) - 1] = '\0';
+
+		run_op_code(line, line_count);
+
 	}
 
-	printf("line count: %d\n", line_count);
+
 	fclose(file);
+	free_stack(stack);
 	return (0);
 }
