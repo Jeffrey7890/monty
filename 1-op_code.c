@@ -83,7 +83,8 @@ int _run_op_code(char *line, unsigned int line_number)
 	{
 		if (strcmp(token, OPCODES[i].opcode) == 0)
 		{
-			OPCODES[i].f(&stack, line_number);
+			if (OPCODES[i].f != NULL)
+				OPCODES[i].f(&stack, line_number);
 			return (1);
 		}
 	}
