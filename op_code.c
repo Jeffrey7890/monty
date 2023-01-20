@@ -1,6 +1,7 @@
 #include "monty.h"
 #include "external.h"
 
+
 /**
   * set_op_code_arg - sets the operation code argument
   * @code: code to check if valid
@@ -38,55 +39,55 @@ int _get_opcode(char *code)
 
 	if (code == NULL)
 		return (-1);
-	for (i = 0; i < OPCODE_LEN; i++)
+	for (i = 0; i < OPCODE_MAX_LEN; i++)
 		if (strcmp(code, opcode_arr[i]) == 0)
 			return (i);
 	return (-1);
 }
 
+
 /**
-  * run_op_code - runs the line of code
-  * @line: line of ocde
-  * @line_number: the argument at that line
-  * Return: 1 if works and -if failed
+  * _run_op_code - excutes the opcode line
+  * @line: line gotten from monty file
+  * @line_number: line index in monty file
+  * Return: 1 if success and -1 if fialed
   */
-int run_op_code(char *line, unsigned int line_number)
+int _run_op_code(char *line, unsigned int line_number)
 {
 	char *token;
 
-	int opcode;
-
-	unsigned int lnumber;
+	unsigned int lnumber, i;
 
 	token = strtok(line, " ");
-	opcode = _get_opcode(token);
-	switch (opcode)
+	if (token == NULL)
+		return (-1);
+	if (strcmp(token, OPCODES[0].opcode) == 0)
 	{
-		case PUSH:
-			token = strtok(NULL, " ");
-			if (token != NULL)
-			{
-				if (set_op_code_arg(token, &lnumber) < 0)
-					print_err(line_number);
-			}
-			else
+		token = strtok(NULL, " ");
+		if (token != NULL)
+		{
+			if (set_op_code_arg(token, &lnumber) < 0)
 				print_err(line_number);
-			push(&stack, lnumber);
-			break;
-		case PALL:
-			pall(&stack);
-			break;
-		case PINT:
-			pint(&stack, line_number);
-			break;
-		case POP:
-			pop(&stack, line_number);
-			break;
-		default:
-			if (token != NULL)
-				print_err_arg(line_number, token);
-			break;
+		}
+		else
+			print_err(line_number);
+		OPCODES[0].f(&stack, lnumber);
+		return (1);
 	}
-
-	return (1);
+	else if (strcmp(token, "pall") == 0)
+	{
+		pall(&stack);
+		return (1);
+	}
+	for (i = 1; i < OPCODE_MAX_LEN; i++)
+	{
+		if (strcmp(token, OPCODES[i].opcode) == 0)
+		{
+			OPCODES[i].f(&stack, line_number);
+			return (1);
+		}
+	}
+	if (token != NULL)
+		print_err_arg(line_number, token);
+	return (-1);
 }

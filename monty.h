@@ -21,9 +21,9 @@ extern char opcode_arr[][10];
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 extern stack_t *stack;
 
