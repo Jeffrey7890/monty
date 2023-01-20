@@ -1,12 +1,20 @@
 #include "monty.h"
 
 
+/**
+  * _isdigit - checks if char is a digit
+  * @c: character ascii
+  * Return: 1 if true and 0 if false
+  */
 int _isdigit(char c)
 {
 	return ((c >= 48) && (c <= 57));
 }
 
-
+/**
+  * print_err - helper function to print errs
+  * @line_number: location of where the error occured
+  */
 void print_err(unsigned int line_number)
 {
 	fprintf(stderr, "L%d: usage: push integer\n", line_number);

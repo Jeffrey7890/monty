@@ -1,5 +1,9 @@
 #include "monty.h"
 
+/**
+  * free_stack - frees the strack data structture
+  * @stack: head of the stack
+  */
 void free_stack(stack_t *stack)
 {
 	stack_t *tmp;
@@ -12,6 +16,11 @@ void free_stack(stack_t *stack)
 	}
 }
 
+/**
+  * push - pushes node to stack
+  * @stack: head of stack
+  * @line_number: integer data type of node
+  */
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
@@ -30,6 +39,10 @@ void push(stack_t **stack, unsigned int line_number)
 	*stack = new_node;
 }
 
+/**
+  * pall - prints all data in stack from top to bottom
+  * @stack: head of stack
+  */
 void pall(stack_t **stack)
 {
 	stack_t *tmp = *stack;
@@ -40,4 +53,4 @@ void pall(stack_t **stack)
 		tmp = tmp->next;
 	}
 }
-	
+
