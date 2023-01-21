@@ -47,9 +47,11 @@ int _run_op_code(char *line, unsigned int line_number)
 	{
 		token = strtok(NULL, " ");
 		if (token != NULL)
+		{
 			if (set_op_code_arg(token, &lnumber) < 0)
 				print_err(line_number);
-		if (token == NULL)
+		}
+		else
 			print_err(line_number);
 		OPCODES[0].f(&stack, lnumber);
 		return (1);
@@ -61,17 +63,14 @@ int _run_op_code(char *line, unsigned int line_number)
 	}
 	for (i = 1; i < OPCODE_MAX_LEN; i++)
 	{
-		if (strcmp(token, OPCODES[i].opcode) == 0 && OPCODES[i].f != NULL)
+		if (strcmp(token, OPCODES[i].opcode) == 0)
 		{
-			OPCODES[i].f(&stack, line_number);
+			if(OPCODES[i].f != NULL)
+				OPCODES[i].f(&stack, line_number);
 			return (1);
 		}
 	}
 	if (token != NULL)
-	{
-		if (token[0] == '#')
-			return (1);
 		print_err_arg(line_number, token);
-	}
 	return (-1);
 }
