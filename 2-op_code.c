@@ -97,3 +97,25 @@ void _div(stack_t **stack, unsigned int line_number)
 	(*stack)->n /= n;
 }
 
+/**
+  * _mul - multiplies the second top element of the stack with the top ele
+  * @stack: top of the stack
+  * @line_number: line index in monty file
+  */
+void _mul(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	int n;
+
+	if ((*stack == NULL) || ((*stack)->next == NULL))
+		fprint_err("L%d: can't mul, stack too short\n", line_number);
+	n = (*stack)->n;
+
+	tmp = *stack;
+	*stack = (*stack)->next;
+	free(tmp);
+
+	(*stack)->n *= n;
+}
+
