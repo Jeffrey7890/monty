@@ -52,6 +52,7 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
 
 /* operations */
 int _isdigit(char c);
@@ -61,6 +62,7 @@ int set_op_code_arg(char *code, unsigned int *lnumber);
 /* utility funcitons */
 void print_err(unsigned int line_number);
 void print_err_arg(unsigned int line_number, char *arg);
+void fprint_err(const char *fmessage, unsigned int line_number);
 void check_file_extension(const char *file_name);
 FILE *open_file(const char *file_name);
 
