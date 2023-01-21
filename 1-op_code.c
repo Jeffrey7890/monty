@@ -29,24 +29,6 @@ int set_op_code_arg(char *code, unsigned int *lnumber)
 }
 
 /**
-  * _get_opcode - gets the operation code from the string line
-  * @code: code from the monty file
-  * Return: -1 if failed and index (i) success
-  */
-int _get_opcode(char *code)
-{
-	int i;
-
-	if (code == NULL)
-		return (-1);
-	for (i = 0; i < OPCODE_MAX_LEN; i++)
-		if (strcmp(code, opcode_arr[i]) == 0)
-			return (i);
-	return (-1);
-}
-
-
-/**
   * _run_op_code - excutes the opcode line
   * @line: line gotten from monty file
   * @line_number: line index in monty file
