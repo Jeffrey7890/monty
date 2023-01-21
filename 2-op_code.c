@@ -1,5 +1,6 @@
 #include "monty.h"
 
+
 /**
   * swap - swaps the top two elements of the stack
   * @stack: head of the stack
@@ -7,7 +8,7 @@
   */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
+	stack_t *tmp, *tmp_next;
 
 	if ((*stack == NULL) || ((*stack)->next == NULL))
 	{
@@ -15,14 +16,16 @@ void swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	tmp = (*stack)->next;
+	tmp_next = tmp->next;
 
-	(*stack)->prev = tmp;
-	(*stack)->next = tmp->next;
-
-	tmp->next->prev = *stack;
+	(*stack)->next = tmp_next;
+	if (tmp_next != NULL)
+		tmp_next->prev = (*stack);
 	tmp->next = *stack;
+	(*stack)->prev = tmp;
 	tmp->prev = NULL;
 	*stack = tmp;
+
 }
 
 
