@@ -52,3 +52,26 @@ void add(stack_t **stack, unsigned int line_number)
 	(*stack)->n += n;
 }
 
+/**
+  * sub - subs the top two elements of the stack
+  * @stack: head of the stack
+  * @line_number: line index in monty file
+  */
+void sub(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	int n;
+
+	if ((*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	n = (*stack)->n;
+	tmp = *stack;
+	*stack = (*stack)->next;
+	free(tmp);
+
+	(*stack)->n -= n;
+}
