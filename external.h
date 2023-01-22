@@ -4,7 +4,7 @@
 
 stack_t *stack;
 
-#define OPCODE_MAX_LEN 11
+#define OPCODE_MAX_LEN 12
 instruction_t OPCODES[OPCODE_MAX_LEN] = {
 	{"push", push},
 	{"pint", pint},
@@ -16,6 +16,7 @@ instruction_t OPCODES[OPCODE_MAX_LEN] = {
 	{"div", _div},
 	{"mul", _mul},
 	{"mod", mod},
+	{"pchar", pchar},
 	{"#", NULL},
 };
 

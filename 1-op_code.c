@@ -65,7 +65,7 @@ int _run_op_code(char *line, unsigned int line_number)
 	{
 		if (strcmp(token, OPCODES[i].opcode) == 0)
 		{
-			if(OPCODES[i].f != NULL)
+			if (OPCODES[i].f != NULL)
 				OPCODES[i].f(&stack, line_number);
 			return (1);
 		}

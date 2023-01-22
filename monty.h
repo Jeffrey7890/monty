@@ -55,6 +55,7 @@ void sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
 
 /* operations */
 int _isdigit(char c);
@@ -62,6 +63,8 @@ int _run_op_code(char *line, unsigned int line_number);
 int set_op_code_arg(char *code, unsigned int *lnumber);
 
 /* utility funcitons */
+int _isempty(stack_t *stack);
+int _ascii(int n);
 void print_err(unsigned int line_number);
 void print_err_arg(unsigned int line_number, char *arg);
 void fprint_err(const char *fmessage, unsigned int line_number);

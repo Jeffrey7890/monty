@@ -24,3 +24,25 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	(*stack)->n %= n;
 }
+
+/**
+  * pchar - prints the char at the top of the stack
+  * @stack: top of stack
+  * @line_number: line index int filoe
+  */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	int n;
+
+	if (_isempty(*stack))
+		fprint_err("L%d: catn't pchar, stack empty\n", line_number);
+
+	n = (*stack)->n;
+	if (!_ascii(n))
+		fprint_err("L%d: can't pchar, value out of range\n", line_number);
+
+	putchar(n);
+	putchar('\n');
+}
+
+
