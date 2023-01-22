@@ -41,8 +41,26 @@ void pchar(stack_t **stack, unsigned int line_number)
 	if (!_ascii(n))
 		fprint_err("L%d: can't pchar, value out of range\n", line_number);
 
-	putchar(n);
-	putchar('\n');
+	printf("%c\n", n);
 }
 
+/**
+  * pstr - prints the string from top of stack
+  * @stack: top of stack
+  * @line_number: line index of file
+  */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
 
+	while (tmp != NULL)
+	{
+		if (tmp->n == 0)
+			break;
+
+		if (_ascii(tmp->n))
+			printf("%c", tmp->n);
+		tmp = tmp->next;
+	}
+	printf("\n");
+}
