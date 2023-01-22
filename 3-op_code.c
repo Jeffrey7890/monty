@@ -34,6 +34,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 {
 	int n;
 
+	(void)line_number;
 	if (_isempty(*stack))
 		fprint_err("L%d: catn't pchar, stack empty\n", line_number);
 
@@ -55,8 +56,11 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	while (tmp != NULL)
 	{
-		if ((tmp->n == 0) || (!_ascii(tmp->n)))
-			return;
+		if (tmp->n == 0)
+			break;
+
+		if (!_ascii(tmp->n))
+			fprint_err("L%d: can't pstr, value out of range\n", line_number);
 
 		if (_ascii(tmp->n))
 			printf("%c", tmp->n);
