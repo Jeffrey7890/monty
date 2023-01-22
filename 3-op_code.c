@@ -50,7 +50,7 @@ void pchar(stack_t **stack, unsigned int line_number)
   * @stack: top of stack
   * @line_number: line index of file
   */
-void pstr(stack_t **stack, unsigned int line_number)
+void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *tmp = *stack;
 
@@ -60,7 +60,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 			break;
 
 		if (!_ascii(tmp->n))
-			fprint_err("L%d: can't pstr, value out of range\n", line_number);
+			break;
 
 		if (_ascii(tmp->n))
 			printf("%c", tmp->n);
