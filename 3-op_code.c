@@ -55,7 +55,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	while (tmp != NULL)
 	{
-		if (tmp->n == 0)
+		if ((tmp->n == 0) || (!_ascii(tmp->n)))
 			break;
 
 		if (_ascii(tmp->n))
