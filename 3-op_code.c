@@ -56,7 +56,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 	while (tmp != NULL)
 	{
 		if ((tmp->n == 0) || (!_ascii(tmp->n)))
-			break;
+			return;
 
 		if (_ascii(tmp->n))
 			printf("%c", tmp->n);
