@@ -34,7 +34,6 @@ void pchar(stack_t **stack, unsigned int line_number)
 {
 	int n;
 
-	(void)line_number;
 	if (_isempty(*stack))
 		fprint_err("L%d: catn't pchar, stack empty\n", line_number);
 
@@ -68,3 +67,27 @@ void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	}
 	printf("\n");
 }
+
+
+/**
+  * rotl - rotats the stack to the top
+  * @stack: top of the stack
+  * @line_number: line index of file
+  */
+void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *tmp = *stack, *first = *stack;
+
+	*stack = (*stack)->next;
+	while (tmp != NULL)
+	{
+		if (tmp->next == NULL)
+		{
+			tmp->next = first;
+			first->prev = tmp;
+			first->next = NULL;
+		}
+		tmp = tmp->next;
+	}
+}
+
