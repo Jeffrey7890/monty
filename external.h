@@ -22,4 +22,4 @@ instruction_t OPCODES[OPCODE_MAX_LEN] = {
 	{"#", NULL},
 };
 
-endif
+#endif
