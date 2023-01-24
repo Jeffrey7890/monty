@@ -18,8 +18,8 @@ instruction_t OPCODES[OPCODE_MAX_LEN] = {
 	{"mod", mod},
 	{"pchar", pchar},
 	{"pstr", pstr},
-    {"rot1", rotl},
+    {"rotl", rotl},
 	{"#", NULL},
 };
 
-#endif
+endif
