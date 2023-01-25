@@ -78,16 +78,24 @@ void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *tmp = *stack, *first = *stack;
 
-	*stack = (*stack)->next;
+
+	if ((*stack == NULL) || ((*stack)->next == NULL))
+		return;
 	while (tmp != NULL)
 	{
+		tmp = tmp->next;
 		if (tmp->next == NULL)
 		{
+			(*stack) = (*stack)->next;
 			tmp->next = first;
+
 			first->prev = tmp;
 			first->next = NULL;
+			printf("last %d first %d\n", first->n, (*stack)->n);
+			return;
 		}
-		tmp = tmp->next;
+
 	}
+
 }
 
